@@ -9,21 +9,43 @@
 /* Begin PBXBuildFile section */
 		E509D9702C2A7F1000996B45 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E509D96F2C2A7F1000996B45 /* AppDelegate.swift */; };
 		E509D9722C2A7F1000996B45 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E509D9712C2A7F1000996B45 /* SceneDelegate.swift */; };
-		E509D9742C2A7F1000996B45 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E509D9732C2A7F1000996B45 /* ViewController.swift */; };
 		E509D9772C2A7F1000996B45 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E509D9752C2A7F1000996B45 /* Main.storyboard */; };
 		E509D9792C2A7F1100996B45 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E509D9782C2A7F1100996B45 /* Assets.xcassets */; };
 		E509D97C2C2A7F1100996B45 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E509D97A2C2A7F1100996B45 /* LaunchScreen.storyboard */; };
+		E509D9842C2A868900996B45 /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = E509D9832C2A868900996B45 /* Song.swift */; };
+		E509D9872C2A86BD00996B45 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E509D9862C2A86BD00996B45 /* NetworkManager.swift */; };
+		E509D98B2C2A872A00996B45 /* SongListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E509D98A2C2A872A00996B45 /* SongListViewController.swift */; };
+		E509D98F2C2A876500996B45 /* SongListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E509D98E2C2A876500996B45 /* SongListInteractor.swift */; };
+		E509D9922C2A878B00996B45 /* SongListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E509D9912C2A878B00996B45 /* SongListPresenter.swift */; };
+		E509D9952C2A87AA00996B45 /* SongListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E509D9942C2A87AA00996B45 /* SongListRouter.swift */; };
+		E509D99D2C2A882500996B45 /* SongDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E509D99C2C2A882500996B45 /* SongDetailViewController.swift */; };
+		E509D99F2C2A885600996B45 /* SongDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E509D99E2C2A885600996B45 /* SongDetailInteractor.swift */; };
+		E509D9A12C2A887E00996B45 /* SongDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E509D9A02C2A887E00996B45 /* SongDetailPresenter.swift */; };
+		E509D9A32C2A889900996B45 /* SongDetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E509D9A22C2A889900996B45 /* SongDetailRouter.swift */; };
+		E509D9A52C2A893C00996B45 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E509D9A42C2A893C00996B45 /* UIImage+Extension.swift */; };
+		E509D9A82C2A970D00996B45 /* SongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E509D9A72C2A970D00996B45 /* SongTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		E509D96C2C2A7F1000996B45 /* iTunesApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iTunesApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E509D96F2C2A7F1000996B45 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E509D9712C2A7F1000996B45 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		E509D9732C2A7F1000996B45 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E509D9762C2A7F1000996B45 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E509D9782C2A7F1100996B45 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E509D97B2C2A7F1100996B45 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E509D97D2C2A7F1100996B45 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E509D9832C2A868900996B45 /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
+		E509D9862C2A86BD00996B45 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		E509D98A2C2A872A00996B45 /* SongListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongListViewController.swift; sourceTree = "<group>"; };
+		E509D98E2C2A876500996B45 /* SongListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongListInteractor.swift; sourceTree = "<group>"; };
+		E509D9912C2A878B00996B45 /* SongListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongListPresenter.swift; sourceTree = "<group>"; };
+		E509D9942C2A87AA00996B45 /* SongListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongListRouter.swift; sourceTree = "<group>"; };
+		E509D99C2C2A882500996B45 /* SongDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongDetailViewController.swift; sourceTree = "<group>"; };
+		E509D99E2C2A885600996B45 /* SongDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongDetailInteractor.swift; sourceTree = "<group>"; };
+		E509D9A02C2A887E00996B45 /* SongDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongDetailPresenter.swift; sourceTree = "<group>"; };
+		E509D9A22C2A889900996B45 /* SongDetailRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongDetailRouter.swift; sourceTree = "<group>"; };
+		E509D9A42C2A893C00996B45 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
+		E509D9A72C2A970D00996B45 /* SongTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,13 +80,136 @@
 			children = (
 				E509D96F2C2A7F1000996B45 /* AppDelegate.swift */,
 				E509D9712C2A7F1000996B45 /* SceneDelegate.swift */,
-				E509D9732C2A7F1000996B45 /* ViewController.swift */,
+				E509D9AB2C2B7D1F00996B45 /* Extension */,
+				E509D9852C2A86AF00996B45 /* Managers */,
+				E509D9882C2A86E200996B45 /* SongListModule */,
 				E509D9752C2A7F1000996B45 /* Main.storyboard */,
 				E509D9782C2A7F1100996B45 /* Assets.xcassets */,
 				E509D97A2C2A7F1100996B45 /* LaunchScreen.storyboard */,
 				E509D97D2C2A7F1100996B45 /* Info.plist */,
 			);
 			path = iTunesApp;
+			sourceTree = "<group>";
+		};
+		E509D9852C2A86AF00996B45 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				E509D9862C2A86BD00996B45 /* NetworkManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		E509D9882C2A86E200996B45 /* SongListModule */ = {
+			isa = PBXGroup;
+			children = (
+				E509D9962C2A87C900996B45 /* SongDetail */,
+				E509D9892C2A86F000996B45 /* SongList */,
+			);
+			path = SongListModule;
+			sourceTree = "<group>";
+		};
+		E509D9892C2A86F000996B45 /* SongList */ = {
+			isa = PBXGroup;
+			children = (
+				E509D9932C2A879100996B45 /* Router */,
+				E509D99B2C2A880900996B45 /* Entity */,
+				E509D9902C2A877D00996B45 /* Presenter */,
+				E509D98D2C2A874F00996B45 /* Interactor */,
+				E509D98C2C2A873100996B45 /* View */,
+			);
+			path = SongList;
+			sourceTree = "<group>";
+		};
+		E509D98C2C2A873100996B45 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E509D98A2C2A872A00996B45 /* SongListViewController.swift */,
+				E509D9A72C2A970D00996B45 /* SongTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E509D98D2C2A874F00996B45 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				E509D98E2C2A876500996B45 /* SongListInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		E509D9902C2A877D00996B45 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				E509D9912C2A878B00996B45 /* SongListPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		E509D9932C2A879100996B45 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				E509D9942C2A87AA00996B45 /* SongListRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		E509D9962C2A87C900996B45 /* SongDetail */ = {
+			isa = PBXGroup;
+			children = (
+				E509D99A2C2A87ED00996B45 /* Router */,
+				E509D9992C2A87E600996B45 /* Presenter */,
+				E509D9982C2A87DB00996B45 /* Interactor */,
+				E509D9972C2A87D100996B45 /* View */,
+			);
+			path = SongDetail;
+			sourceTree = "<group>";
+		};
+		E509D9972C2A87D100996B45 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E509D99C2C2A882500996B45 /* SongDetailViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E509D9982C2A87DB00996B45 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				E509D99E2C2A885600996B45 /* SongDetailInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		E509D9992C2A87E600996B45 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				E509D9A02C2A887E00996B45 /* SongDetailPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		E509D99A2C2A87ED00996B45 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				E509D9A22C2A889900996B45 /* SongDetailRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		E509D99B2C2A880900996B45 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				E509D9832C2A868900996B45 /* Song.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		E509D9AB2C2B7D1F00996B45 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				E509D9A42C2A893C00996B45 /* UIImage+Extension.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,9 +283,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E509D9742C2A7F1000996B45 /* ViewController.swift in Sources */,
+				E509D9A32C2A889900996B45 /* SongDetailRouter.swift in Sources */,
+				E509D9A52C2A893C00996B45 /* UIImage+Extension.swift in Sources */,
+				E509D9952C2A87AA00996B45 /* SongListRouter.swift in Sources */,
+				E509D9842C2A868900996B45 /* Song.swift in Sources */,
+				E509D99F2C2A885600996B45 /* SongDetailInteractor.swift in Sources */,
+				E509D9872C2A86BD00996B45 /* NetworkManager.swift in Sources */,
 				E509D9702C2A7F1000996B45 /* AppDelegate.swift in Sources */,
+				E509D9A12C2A887E00996B45 /* SongDetailPresenter.swift in Sources */,
+				E509D98F2C2A876500996B45 /* SongListInteractor.swift in Sources */,
+				E509D99D2C2A882500996B45 /* SongDetailViewController.swift in Sources */,
+				E509D9922C2A878B00996B45 /* SongListPresenter.swift in Sources */,
+				E509D9A82C2A970D00996B45 /* SongTableViewCell.swift in Sources */,
 				E509D9722C2A7F1000996B45 /* SceneDelegate.swift in Sources */,
+				E509D98B2C2A872A00996B45 /* SongListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
