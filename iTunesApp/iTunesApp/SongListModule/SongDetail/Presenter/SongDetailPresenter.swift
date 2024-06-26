@@ -5,35 +5,29 @@
 //  Created by Висент Щепетков on 25.06.2024.
 //
 
-import Foundation
-
-/// Протокол для презентера деталей песни
-protocol SongDetailPresenterProtocol: AnyObject {
-    /// Вызывается при загрузке представления
-    func viewDidLoad()
-    
-    /// Обновляет прогресс воспроизведения песни
-    /// - Parameters:
-    ///   - currentTime: текущее время воспроизведения
-    ///   - duration: общая продолжительность песни
-    func updateProgress(currentTime: Double, duration: Double)
-    
-    /// Настраивает презентер с объектом песни
-    /// - Parameter song: объект песни для настройки
-    func configure(with song: Song)
-}
+import UIKit
 
 final class SongDetailPresenter: SongDetailPresenterProtocol {
     
     // MARK: - Public properties
-    weak var view: SongDetailViewProtocol?
+    weak var view: SongDetailPresenterOutput?
+    private var playerService: PlayerServiceProtocol?
+    private var imageLoadingService: ImageLoadingServiceProtocol?
 
     // MARK: - Private properties
     private var song: Song?
 
     // MARK: - Configuration
-    func configure(with song: Song) {
+    func configure(
+        view: SongDetailPresenterOutput,
+        song: Song,
+        playerService: PlayerServiceProtocol,
+        imageLoadingService: ImageLoadingServiceProtocol
+    ) {
+        self.view = view
         self.song = song
+        self.playerService = playerService
+        self.imageLoadingService = imageLoadingService
     }
     
     // MARK: - Public Methods
@@ -44,5 +38,29 @@ final class SongDetailPresenter: SongDetailPresenterProtocol {
 
     func updateProgress(currentTime: Double, duration: Double) {
         view?.updateProgress(currentTime: currentTime, duration: duration)
+    }
+
+    func play() {
+        playerService?.play()
+    }
+
+    func pause() {
+        playerService?.pause()
+    }
+
+    func rewind(by seconds: Double) {
+        playerService?.rewind(by: seconds)
+    }
+
+    func fastForward(by seconds: Double) {
+        playerService?.fastForward(by: seconds)
+    }
+
+    func seek(to seconds: Double) {
+        playerService?.seek(to: seconds)
+    }
+    
+    func loadImage(from url: URL, completion: @escaping (UIImage?) -> Void) {
+        imageLoadingService?.loadImage(from: url, completion: completion)
     }
 }

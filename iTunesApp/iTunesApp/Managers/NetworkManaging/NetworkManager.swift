@@ -1,3 +1,4 @@
+//
 //  NetworkManager.swift
 //  iTunesApp
 //
@@ -6,17 +7,9 @@
 
 import Foundation
 
-/// Протокол для сетевого менеджера
-protocol NetworkManaging {
-    /// Ищет песни по ключевому слову
-    /// - Parameters:
-    ///   - keyword: ключевое слово для поиска песен
-    ///   - offset: смещение для пагинации
-    ///   - completion: замыкание с результатом поиска
-    func searchSongs(keyword: String, offset: Int, completion: @escaping (Result<[Song], Error>) -> Void)
-}
-
 final class NetworkManager: NetworkManaging {
+    
+    // MARK: - Public Methods
     func searchSongs(keyword: String, offset: Int = 0, completion: @escaping (Result<[Song], Error>) -> Void) {
         let formattedKeyword = keyword.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? keyword
         guard let url = URL(string: "https://itunes.apple.com/search?term=\(formattedKeyword)&media=music&entity=song&offset=\(offset)") else {

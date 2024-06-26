@@ -1,40 +1,15 @@
-//  SongListViewController.swift
-//  iTunesApp
+// SongListViewController.swift
+// iTunesApp
 //
-//  Created by Висент Щепетков on 25.06.2024.
+// Created by Висент Щепетков on 25.06.2024.
 //
 
 import UIKit
 
-/// Протокол для отображения списка песен
-protocol SongListViewProtocol: AnyObject {
-    /// Отображает список песен
-    /// - Parameter songs: массив песен для отображения
-    func showSongs(_ songs: [Song])
-    
-    /// Добавляет песни к текущему списку
-    /// - Parameter songs: массив песен для добавления
-    func appendSongs(_ songs: [Song])
-    
-    /// Отображает ошибку
-    /// - Parameter message: сообщение об ошибке
-    func showError(_ message: String)
-    
-    /// Показывает индикатор загрузки
-    func showLoading()
-    
-    /// Скрывает индикатор загрузки
-    func hideLoading()
-}
-
 final class SongListViewController: UIViewController {
     
-    // MARK: - Public properties
-    
-    var presenter: SongListPresenterProtocol?
-    
     // MARK: - Private properties
-    
+    private var presenter: SongListPresenterProtocol?
     private var songs: [Song] = []
     private let tableView = UITableView()
     private let searchBar = UISearchBar()
@@ -51,14 +26,29 @@ final class SongListViewController: UIViewController {
     }
     
     // MARK: - Lifecycle
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        setupTapGesture()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        dismissKeyboard()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        searchBar.resignFirstResponder()
+        deselectAllRows()
+    }
+    
+    // MARK: - Configuration
+    func configure(presenter: SongListPresenterProtocol) {
+        self.presenter = presenter
     }
     
     // MARK: - Private Methods
-    
     private func setupUI() {
         view.backgroundColor = .white
         setupSearchBar()
@@ -95,10 +85,30 @@ final class SongListViewController: UIViewController {
             loadingIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
     }
+    
+    private func setupTapGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        tapGesture.cancelsTouchesInView = false
+        view.addGestureRecognizer(tapGesture)
+    }
+    
+    private func deselectAllRows() {
+        if let selectedIndexPaths = tableView.indexPathsForSelectedRows {
+            for indexPath in selectedIndexPaths {
+                tableView.deselectRow(at: indexPath, animated: false)
+            }
+        }
+    }
+    
+    // MARK: - Actions
+    @objc private func dismissKeyboard() {
+        view.endEditing(true)
+        searchBar.resignFirstResponder()
+    }
 }
 
 // MARK: - SongListViewProtocol
-extension SongListViewController: SongListViewProtocol {
+extension SongListViewController: SongListPresenterOutput {
     func showSongs(_ songs: [Song]) {
         DispatchQueue.main.async {
             self.songs = songs
@@ -150,7 +160,7 @@ extension SongListViewController: UITableViewDataSource {
             return UITableViewCell()
         }
         let song = songs[indexPath.row]
-        cell.configure(with: song)
+        cell.configure(with: song, presenter: presenter)
         return cell
     }
 }
@@ -182,5 +192,9 @@ extension SongListViewController: UISearchBarDelegate {
         searchTimer = Timer.scheduledTimer(withTimeInterval: Constants.searchTimerInterval, repeats: false) { [weak self] _ in
             self?.presenter?.searchSongs(with: searchText)
         }
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
     }
 }

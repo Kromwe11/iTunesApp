@@ -1,55 +1,32 @@
-//  SongListInteractor.swift
-//  iTunesApp
 //
-//  Created by Висент Щепетков on 25.06.2024.
+// SongListInteractor.swift
+// iTunesApp
+//
+// Created by Висент Щепетков on 25.06.2024.
 //
 
-import Foundation
+import UIKit
 
-/// Протокол для обратного вызова из интерактора
-protocol SongListInteractorOutputProtocol: AnyObject {
-    /// Вызывается при успешном получении песен
-    /// - Parameters:
-    ///   - songs: массив песен
-    ///   - isPagination: флаг пагинации
-    func didRetrieveSongs(_ songs: [Song], isPagination: Bool)
-    
-    /// Вызывается при ошибке получения песен
-    /// - Parameter error: ошибка
-    func didFailToRetrieveSongs(with error: Error)
-}
-
-/// Протокол для взаимодействия с интерактором
-protocol SongListInteractorInputProtocol: AnyObject {
-    /// Ищет песни по ключевому слову
-    /// - Parameters:
-    ///   - keyword: ключевое слово для поиска песен
-    ///   - page: номер страницы для пагинации
-    ///   - isPagination: флаг пагинации
-    func searchSongs(with keyword: String, page: Int, isPagination: Bool)
-}
-
-final class SongListInteractor: SongListInteractorInputProtocol {
-    
-    // MARK: - Public properties
-
-    weak var presenter: SongListInteractorOutputProtocol?
+final class SongListInteractor: SongListInteractorInput {
     
     // MARK: - Private properties
-
     private var networkManager: NetworkManaging?
-
+    private weak var presenter: SongListInteractorOutput?
+    private var imageLoadingService: ImageLoadingServiceProtocol?
+    
     private enum Constants {
         static let minimumKeywordLength: Int = 3
         static let songsPerPage: Int = 20
         static let keywordLengthError = "Keyword must be longer than 3 characters."
     }
-
+    
     // MARK: - Configuration
-    func configure(networkManager: NetworkManaging) {
+    func configure(networkManager: NetworkManaging, presenter: SongListInteractorOutput, imageLoadingService: ImageLoadingServiceProtocol) {
         self.networkManager = networkManager
+        self.presenter = presenter
+        self.imageLoadingService = imageLoadingService
     }
-
+    
     // MARK: - Public Methods
     func searchSongs(with keyword: String, page: Int, isPagination: Bool) {
         guard keyword.count > Constants.minimumKeywordLength else {
@@ -71,5 +48,9 @@ final class SongListInteractor: SongListInteractorInputProtocol {
                 self?.presenter?.didFailToRetrieveSongs(with: error)
             }
         }
+    }
+    
+    func loadImage(from url: URL, completion: @escaping (UIImage?) -> Void) {
+        imageLoadingService?.loadImage(from: url, completion: completion)
     }
 }

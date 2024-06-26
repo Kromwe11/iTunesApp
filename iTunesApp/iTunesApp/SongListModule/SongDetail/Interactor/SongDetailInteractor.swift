@@ -1,3 +1,4 @@
+//
 //  SongDetailInteractor.swift
 //  iTunesApp
 //
@@ -5,18 +6,6 @@
 //
 
 import Foundation
-
-/// Протокол для взаимодействия с интерактором
-protocol SongDetailInteractorInputProtocol: AnyObject {
-    /// Метод для настройки интерактора с песней
-    /// - Parameter song: объект песни для настройки
-    func configure(song: Song)
-}
-
-/// Протокол для обратного вызова из интерактора
-protocol SongDetailInteractorOutputProtocol: AnyObject {
-    // Методы обратного вызова из интерактора, если необходимы
-}
 
 final class SongDetailInteractor: SongDetailInteractorInputProtocol {
     

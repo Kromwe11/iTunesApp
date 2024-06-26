@@ -7,19 +7,6 @@
 
 import UIKit
 
-/// Протокол для маршрутизатора списка песен
-protocol SongListRouterProtocol: AnyObject {
-    /// Создает модуль списка песен
-    /// - Returns: контроллер представления для списка песен
-    static func createSongListModule() -> UIViewController
-    
-    /// Навигация к деталям песни
-    /// - Parameters:
-    ///   - view: текущее представление списка песен
-    ///   - song: объект песни для отображения
-    func navigateToSongDetail(from view: SongListViewProtocol?, with song: Song)
-}
-
 final class SongListRouter: SongListRouterProtocol {
     
     // MARK: - Public Methods
@@ -28,21 +15,23 @@ final class SongListRouter: SongListRouterProtocol {
         let interactor = SongListInteractor()
         let presenter = SongListPresenter()
         let router = SongListRouter()
+        let imageLoadingService = ImageLoadingService()
+        let networkManager = NetworkManager()
         
-        view.presenter = presenter
-        presenter.view = view
-        presenter.interactor = interactor
-        presenter.router = router
-        interactor.presenter = presenter
-        interactor.configure(networkManager: NetworkManager())
+        view.configure(presenter: presenter)
+        presenter.configure(view: view, interactor: interactor, router: router)
+        interactor.configure(
+            networkManager: networkManager,
+            presenter: presenter,
+            imageLoadingService: imageLoadingService
+        )
         
         return view
     }
     
-    func navigateToSongDetail(from view: SongListViewProtocol?, with song: Song) {
+    func navigateToSongDetail(from view: SongListPresenterOutput?, with song: Song) {
         let songDetailViewController = SongDetailRouter.createSongDetailModule(with: song)
-        if let viewController = view as? UIViewController {
-            viewController.navigationController?.pushViewController(songDetailViewController, animated: true)
-        }
+        guard let viewController = view as? UIViewController else { return }
+        viewController.navigationController?.pushViewController(songDetailViewController, animated: true)
     }
 }

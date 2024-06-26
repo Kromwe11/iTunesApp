@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		E509D9702C2A7F1000996B45 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E509D96F2C2A7F1000996B45 /* AppDelegate.swift */; };
 		E509D9722C2A7F1000996B45 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E509D9712C2A7F1000996B45 /* SceneDelegate.swift */; };
-		E509D9772C2A7F1000996B45 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E509D9752C2A7F1000996B45 /* Main.storyboard */; };
 		E509D9792C2A7F1100996B45 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E509D9782C2A7F1100996B45 /* Assets.xcassets */; };
 		E509D97C2C2A7F1100996B45 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E509D97A2C2A7F1100996B45 /* LaunchScreen.storyboard */; };
 		E509D9842C2A868900996B45 /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = E509D9832C2A868900996B45 /* Song.swift */; };
@@ -22,15 +21,26 @@
 		E509D99F2C2A885600996B45 /* SongDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E509D99E2C2A885600996B45 /* SongDetailInteractor.swift */; };
 		E509D9A12C2A887E00996B45 /* SongDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E509D9A02C2A887E00996B45 /* SongDetailPresenter.swift */; };
 		E509D9A32C2A889900996B45 /* SongDetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E509D9A22C2A889900996B45 /* SongDetailRouter.swift */; };
-		E509D9A52C2A893C00996B45 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E509D9A42C2A893C00996B45 /* UIImage+Extension.swift */; };
 		E509D9A82C2A970D00996B45 /* SongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E509D9A72C2A970D00996B45 /* SongTableViewCell.swift */; };
+		E55F16052C2BB8580043E79B /* SongListPresenterOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55F16042C2BB8580043E79B /* SongListPresenterOutput.swift */; };
+		E55F16072C2BB8A90043E79B /* SongListInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55F16062C2BB8A90043E79B /* SongListInteractorProtocol.swift */; };
+		E55F16092C2BB8CF0043E79B /* SongListPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55F16082C2BB8CF0043E79B /* SongListPresenterProtocol.swift */; };
+		E55F160B2C2BB8E20043E79B /* SongListRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55F160A2C2BB8E20043E79B /* SongListRouterProtocol.swift */; };
+		E55F160D2C2BB8FB0043E79B /* SongDetailPresenterOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55F160C2C2BB8FB0043E79B /* SongDetailPresenterOutput.swift */; };
+		E55F160F2C2BB9150043E79B /* SongDetailInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55F160E2C2BB9150043E79B /* SongDetailInteractorProtocol.swift */; };
+		E55F16112C2BB9320043E79B /* SongDetailPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55F16102C2BB9320043E79B /* SongDetailPresenterProtocol.swift */; };
+		E55F16132C2BB9470043E79B /* SongDetailRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55F16122C2BB9470043E79B /* SongDetailRouterProtocol.swift */; };
+		E55F16152C2BBF230043E79B /* PlayerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55F16142C2BBF230043E79B /* PlayerService.swift */; };
+		E55F16172C2BC8AE0043E79B /* PlayerServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55F16162C2BC8AE0043E79B /* PlayerServiceProtocol.swift */; };
+		E55F16192C2BC8CA0043E79B /* PlayerServiceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55F16182C2BC8CA0043E79B /* PlayerServiceDelegate.swift */; };
+		E55F161F2C2BE62C0043E79B /* NetworkManagingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55F161E2C2BE62C0043E79B /* NetworkManagingProtocol.swift */; };
+		E55F16282C2C050B0043E79B /* ImageLoadingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55F16272C2C050B0043E79B /* ImageLoadingService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		E509D96C2C2A7F1000996B45 /* iTunesApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iTunesApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E509D96F2C2A7F1000996B45 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E509D9712C2A7F1000996B45 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		E509D9762C2A7F1000996B45 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E509D9782C2A7F1100996B45 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E509D97B2C2A7F1100996B45 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E509D97D2C2A7F1100996B45 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -44,8 +54,20 @@
 		E509D99E2C2A885600996B45 /* SongDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongDetailInteractor.swift; sourceTree = "<group>"; };
 		E509D9A02C2A887E00996B45 /* SongDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongDetailPresenter.swift; sourceTree = "<group>"; };
 		E509D9A22C2A889900996B45 /* SongDetailRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongDetailRouter.swift; sourceTree = "<group>"; };
-		E509D9A42C2A893C00996B45 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		E509D9A72C2A970D00996B45 /* SongTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongTableViewCell.swift; sourceTree = "<group>"; };
+		E55F16042C2BB8580043E79B /* SongListPresenterOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongListPresenterOutput.swift; sourceTree = "<group>"; };
+		E55F16062C2BB8A90043E79B /* SongListInteractorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongListInteractorProtocol.swift; sourceTree = "<group>"; };
+		E55F16082C2BB8CF0043E79B /* SongListPresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongListPresenterProtocol.swift; sourceTree = "<group>"; };
+		E55F160A2C2BB8E20043E79B /* SongListRouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongListRouterProtocol.swift; sourceTree = "<group>"; };
+		E55F160C2C2BB8FB0043E79B /* SongDetailPresenterOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongDetailPresenterOutput.swift; sourceTree = "<group>"; };
+		E55F160E2C2BB9150043E79B /* SongDetailInteractorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongDetailInteractorProtocol.swift; sourceTree = "<group>"; };
+		E55F16102C2BB9320043E79B /* SongDetailPresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongDetailPresenterProtocol.swift; sourceTree = "<group>"; };
+		E55F16122C2BB9470043E79B /* SongDetailRouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongDetailRouterProtocol.swift; sourceTree = "<group>"; };
+		E55F16142C2BBF230043E79B /* PlayerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerService.swift; sourceTree = "<group>"; };
+		E55F16162C2BC8AE0043E79B /* PlayerServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerServiceProtocol.swift; sourceTree = "<group>"; };
+		E55F16182C2BC8CA0043E79B /* PlayerServiceDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerServiceDelegate.swift; sourceTree = "<group>"; };
+		E55F161E2C2BE62C0043E79B /* NetworkManagingProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagingProtocol.swift; sourceTree = "<group>"; };
+		E55F16272C2C050B0043E79B /* ImageLoadingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoadingService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,10 +102,8 @@
 			children = (
 				E509D96F2C2A7F1000996B45 /* AppDelegate.swift */,
 				E509D9712C2A7F1000996B45 /* SceneDelegate.swift */,
-				E509D9AB2C2B7D1F00996B45 /* Extension */,
 				E509D9852C2A86AF00996B45 /* Managers */,
 				E509D9882C2A86E200996B45 /* SongListModule */,
-				E509D9752C2A7F1000996B45 /* Main.storyboard */,
 				E509D9782C2A7F1100996B45 /* Assets.xcassets */,
 				E509D97A2C2A7F1100996B45 /* LaunchScreen.storyboard */,
 				E509D97D2C2A7F1100996B45 /* Info.plist */,
@@ -94,7 +114,9 @@
 		E509D9852C2A86AF00996B45 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				E509D9862C2A86BD00996B45 /* NetworkManager.swift */,
+				E55F16262C2C04FB0043E79B /* ImageLoadingService */,
+				E55F16202C2BE6400043E79B /* NetworkManaging */,
+				E55F161A2C2BE0780043E79B /* PlayerService */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -132,6 +154,7 @@
 		E509D98D2C2A874F00996B45 /* Interactor */ = {
 			isa = PBXGroup;
 			children = (
+				E55F16062C2BB8A90043E79B /* SongListInteractorProtocol.swift */,
 				E509D98E2C2A876500996B45 /* SongListInteractor.swift */,
 			);
 			path = Interactor;
@@ -140,7 +163,9 @@
 		E509D9902C2A877D00996B45 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				E55F16082C2BB8CF0043E79B /* SongListPresenterProtocol.swift */,
 				E509D9912C2A878B00996B45 /* SongListPresenter.swift */,
+				E55F16042C2BB8580043E79B /* SongListPresenterOutput.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -149,6 +174,7 @@
 			isa = PBXGroup;
 			children = (
 				E509D9942C2A87AA00996B45 /* SongListRouter.swift */,
+				E55F160A2C2BB8E20043E79B /* SongListRouterProtocol.swift */,
 			);
 			path = Router;
 			sourceTree = "<group>";
@@ -175,6 +201,7 @@
 		E509D9982C2A87DB00996B45 /* Interactor */ = {
 			isa = PBXGroup;
 			children = (
+				E55F160E2C2BB9150043E79B /* SongDetailInteractorProtocol.swift */,
 				E509D99E2C2A885600996B45 /* SongDetailInteractor.swift */,
 			);
 			path = Interactor;
@@ -183,7 +210,9 @@
 		E509D9992C2A87E600996B45 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				E55F16102C2BB9320043E79B /* SongDetailPresenterProtocol.swift */,
 				E509D9A02C2A887E00996B45 /* SongDetailPresenter.swift */,
+				E55F160C2C2BB8FB0043E79B /* SongDetailPresenterOutput.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -191,6 +220,7 @@
 		E509D99A2C2A87ED00996B45 /* Router */ = {
 			isa = PBXGroup;
 			children = (
+				E55F16122C2BB9470043E79B /* SongDetailRouterProtocol.swift */,
 				E509D9A22C2A889900996B45 /* SongDetailRouter.swift */,
 			);
 			path = Router;
@@ -204,12 +234,31 @@
 			path = Entity;
 			sourceTree = "<group>";
 		};
-		E509D9AB2C2B7D1F00996B45 /* Extension */ = {
+		E55F161A2C2BE0780043E79B /* PlayerService */ = {
 			isa = PBXGroup;
 			children = (
-				E509D9A42C2A893C00996B45 /* UIImage+Extension.swift */,
+				E55F16162C2BC8AE0043E79B /* PlayerServiceProtocol.swift */,
+				E55F16182C2BC8CA0043E79B /* PlayerServiceDelegate.swift */,
+				E55F16142C2BBF230043E79B /* PlayerService.swift */,
 			);
-			path = Extension;
+			path = PlayerService;
+			sourceTree = "<group>";
+		};
+		E55F16202C2BE6400043E79B /* NetworkManaging */ = {
+			isa = PBXGroup;
+			children = (
+				E509D9862C2A86BD00996B45 /* NetworkManager.swift */,
+				E55F161E2C2BE62C0043E79B /* NetworkManagingProtocol.swift */,
+			);
+			path = NetworkManaging;
+			sourceTree = "<group>";
+		};
+		E55F16262C2C04FB0043E79B /* ImageLoadingService */ = {
+			isa = PBXGroup;
+			children = (
+				E55F16272C2C050B0043E79B /* ImageLoadingService.swift */,
+			);
+			path = ImageLoadingService;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -272,7 +321,6 @@
 			files = (
 				E509D97C2C2A7F1100996B45 /* LaunchScreen.storyboard in Resources */,
 				E509D9792C2A7F1100996B45 /* Assets.xcassets in Resources */,
-				E509D9772C2A7F1000996B45 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,19 +331,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E55F16052C2BB8580043E79B /* SongListPresenterOutput.swift in Sources */,
 				E509D9A32C2A889900996B45 /* SongDetailRouter.swift in Sources */,
-				E509D9A52C2A893C00996B45 /* UIImage+Extension.swift in Sources */,
 				E509D9952C2A87AA00996B45 /* SongListRouter.swift in Sources */,
 				E509D9842C2A868900996B45 /* Song.swift in Sources */,
 				E509D99F2C2A885600996B45 /* SongDetailInteractor.swift in Sources */,
+				E55F16132C2BB9470043E79B /* SongDetailRouterProtocol.swift in Sources */,
+				E55F16072C2BB8A90043E79B /* SongListInteractorProtocol.swift in Sources */,
+				E55F160B2C2BB8E20043E79B /* SongListRouterProtocol.swift in Sources */,
 				E509D9872C2A86BD00996B45 /* NetworkManager.swift in Sources */,
+				E55F16152C2BBF230043E79B /* PlayerService.swift in Sources */,
 				E509D9702C2A7F1000996B45 /* AppDelegate.swift in Sources */,
 				E509D9A12C2A887E00996B45 /* SongDetailPresenter.swift in Sources */,
+				E55F16282C2C050B0043E79B /* ImageLoadingService.swift in Sources */,
+				E55F16112C2BB9320043E79B /* SongDetailPresenterProtocol.swift in Sources */,
 				E509D98F2C2A876500996B45 /* SongListInteractor.swift in Sources */,
 				E509D99D2C2A882500996B45 /* SongDetailViewController.swift in Sources */,
 				E509D9922C2A878B00996B45 /* SongListPresenter.swift in Sources */,
+				E55F16092C2BB8CF0043E79B /* SongListPresenterProtocol.swift in Sources */,
 				E509D9A82C2A970D00996B45 /* SongTableViewCell.swift in Sources */,
+				E55F160F2C2BB9150043E79B /* SongDetailInteractorProtocol.swift in Sources */,
+				E55F160D2C2BB8FB0043E79B /* SongDetailPresenterOutput.swift in Sources */,
 				E509D9722C2A7F1000996B45 /* SceneDelegate.swift in Sources */,
+				E55F161F2C2BE62C0043E79B /* NetworkManagingProtocol.swift in Sources */,
+				E55F16172C2BC8AE0043E79B /* PlayerServiceProtocol.swift in Sources */,
+				E55F16192C2BC8CA0043E79B /* PlayerServiceDelegate.swift in Sources */,
 				E509D98B2C2A872A00996B45 /* SongListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -303,14 +363,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		E509D9752C2A7F1000996B45 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E509D9762C2A7F1000996B45 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		E509D97A2C2A7F1100996B45 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -453,7 +505,6 @@
 				INFOPLIST_FILE = iTunesApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -481,7 +532,6 @@
 				INFOPLIST_FILE = iTunesApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

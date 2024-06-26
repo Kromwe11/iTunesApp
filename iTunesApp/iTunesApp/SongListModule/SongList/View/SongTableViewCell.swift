@@ -9,7 +9,6 @@ import UIKit
 final class SongTableViewCell: UITableViewCell {
     
     // MARK: - Private properties
-    
     private let songImageView = UIImageView()
     private let songTitleLabel = UILabel()
     private let artistNameLabel = UILabel()
@@ -30,7 +29,6 @@ final class SongTableViewCell: UITableViewCell {
     }
     
     // MARK: - Initialization
-    
     override func prepareForReuse() {
         super.prepareForReuse()
         songImageView.image = UIImage(named: Constants.placeholderImageName)
@@ -39,22 +37,22 @@ final class SongTableViewCell: UITableViewCell {
     }
     
     // MARK: - Public Methods
-    
-    func configure(with song: Song) {
+    func configure(with song: Song, presenter: SongListPresenterProtocol?) {
         setupViews()
         layoutViews()
         
         songTitleLabel.text = song.trackName
         artistNameLabel.text = song.artistName
         if let urlString = song.artworkUrl100, let url = URL(string: urlString) {
-            songImageView.load(url: url, placeholder: UIImage(named: Constants.placeholderImageName)!)
+            presenter?.loadImage(from: url) { [weak self] image in
+                self?.songImageView.image = image ?? UIImage(named: Constants.placeholderImageName)
+            }
         } else {
             songImageView.image = UIImage(named: Constants.placeholderImageName)
         }
     }
     
     // MARK: - Private Methods
-    
     private func setupViews() {
         songImageView.contentMode = .scaleAspectFill
         songImageView.clipsToBounds = true

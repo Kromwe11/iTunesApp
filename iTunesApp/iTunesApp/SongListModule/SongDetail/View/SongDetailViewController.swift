@@ -5,33 +5,12 @@
 //  Created by Висент Щепетков on 25.06.2024.
 //
 
-import AVFoundation
-import MediaPlayer
 import UIKit
-
-/// Протокол для отображения деталей песни
-protocol SongDetailViewProtocol: AnyObject {
-    /// Отображает детали песни
-    /// - Parameter song: объект песни для отображения
-    func showSongDetail(with song: Song)
-    
-    /// Обновляет заголовок кнопки воспроизведения
-    /// - Parameter isPlaying: флаг, указывающий, воспроизводится ли в данный момент песня
-    func updatePlayButtonTitle(isPlaying: Bool)
-    
-    /// Обновляет прогресс воспроизведения
-    /// - Parameters:
-    ///   - currentTime: текущее время воспроизведения
-    ///   - duration: общая продолжительность песни
-    func updateProgress(currentTime: Double, duration: Double)
-}
 
 final class SongDetailViewController: UIViewController {
     
-    // MARK: - Public properties
-    var presenter: SongDetailPresenterProtocol?
-    
     // MARK: - Private properties
+    private var presenter: SongDetailPresenterProtocol?
     private let imageView = UIImageView()
     private let songLabel = UILabel()
     private let artistLabel = UILabel()
@@ -41,9 +20,7 @@ final class SongDetailViewController: UIViewController {
     private let progressSlider = UISlider()
     private let shareButton = UIButton(type: .system)
     private let favoriteButton = UIButton(type: .system)
-    private var player: AVPlayer?
-    private var playerItem: AVPlayerItem?
-    private var timeObserverToken: Any?
+    private let playerService: PlayerServiceProtocol = PlayerService.shared
     
     private enum Constants {
         static let imageShadowOpacity: Float = 0.8
@@ -82,11 +59,17 @@ final class SongDetailViewController: UIViewController {
         super.viewDidLoad()
         setupUI()
         setupNavigationBar()
+        playerService.delegate = self
         presenter?.viewDidLoad()
     }
     
     deinit {
-        removePeriodicTimeObserver()
+        playerService.pause()
+    }
+    
+    // MARK: - Configuration
+    func configure(presenter: SongDetailPresenterProtocol) {
+        self.presenter = presenter
     }
     
     // MARK: - Private Methods
@@ -99,10 +82,6 @@ final class SongDetailViewController: UIViewController {
             action: #selector(backButtonTapped)
         )
         navigationItem.leftBarButtonItem = backButton
-    }
-    
-    @objc private func backButtonTapped() {
-        navigationController?.popViewController(animated: true)
     }
     
     private func setupUI() {
@@ -194,56 +173,27 @@ final class SongDetailViewController: UIViewController {
         ])
     }
     
-    private func addPeriodicTimeObserver() {
-        let interval = CMTime(seconds: Constants.sliderUpdateInterval, preferredTimescale: 1)
-        timeObserverToken = player?.addPeriodicTimeObserver(forInterval: interval, queue: .main) { [weak self] time in
-            let currentTime = time.seconds
-            let duration = self?.player?.currentItem?.duration.seconds ?? 0
-            self?.presenter?.updateProgress(currentTime: currentTime, duration: duration)
-        }
-    }
-    
-    private func removePeriodicTimeObserver() {
-        if let token = timeObserverToken {
-            player?.removeTimeObserver(token)
-            timeObserverToken = nil
-        }
-    }
-    
     // MARK: - Actions
     @objc private func playPauseButtonTapped() {
-        if player?.timeControlStatus == .playing {
-            player?.pause()
-            playPauseButton.setImage(UIImage(systemName: Constants.playIcon), for: .normal)
+        if playPauseButton.currentImage == UIImage(systemName: Constants.playIcon) {
+            presenter?.play()
         } else {
-            player?.play()
-            playPauseButton.setImage(UIImage(systemName: Constants.pauseIcon), for: .normal)
+            presenter?.pause()
         }
     }
     
     @objc private func rewindButtonTapped() {
-        let currentTime = player?.currentTime() ?? CMTime.zero
-        var newTime = CMTimeGetSeconds(currentTime) - Constants.seekTime
-        if newTime < 0 {
-            newTime = 0
-        }
-        player?.seek(to: CMTime(seconds: newTime, preferredTimescale: 1))
+        presenter?.rewind(by: Constants.seekTime)
     }
     
     @objc private func fastForwardButtonTapped() {
-        guard let duration = player?.currentItem?.duration else { return }
-        let currentTime = player?.currentTime() ?? CMTime.zero
-        var newTime = CMTimeGetSeconds(currentTime) + Constants.seekTime
-        if newTime > CMTimeGetSeconds(duration) {
-            newTime = CMTimeGetSeconds(duration)
-        }
-        player?.seek(to: CMTime(seconds: newTime, preferredTimescale: 1))
+        presenter?.fastForward(by: Constants.seekTime)
     }
     
     @objc private func progressSliderChanged(sender: UISlider) {
-        let totalDuration = player?.currentItem?.duration.seconds ?? 0
+        let totalDuration = playerService.duration
         let newTime = totalDuration * Double(sender.value)
-        player?.seek(to: CMTime(seconds: newTime, preferredTimescale: 1))
+        presenter?.seek(to: newTime)
     }
     
     @objc private func shareButtonTapped() {
@@ -252,26 +202,32 @@ final class SongDetailViewController: UIViewController {
         let activityVC = UIActivityViewController(activityItems: [textToShare], applicationActivities: nil)
         present(activityVC, animated: true, completion: nil)
     }
+    
+    @objc private func backButtonTapped() {
+        navigationController?.popViewController(animated: true)
+    }
 }
 
-// MARK: - SongDetailViewProtocol
-extension SongDetailViewController: SongDetailViewProtocol {
+// MARK: - SongDetailPresenterOutput
+extension SongDetailViewController: SongDetailPresenterOutput {
     func showSongDetail(with song: Song) {
         songLabel.text = "\(Constants.songText) \(song.trackName ?? Constants.songPlaceholder)"
         artistLabel.text = "\(Constants.authorText) \(song.artistName ?? Constants.artistPlaceholder)"
         
         if let urlString = song.artworkUrl100?.replacingOccurrences(of: Constants.lowResImageURLSuffix, with: Constants.highResImageURLSuffix), let url = URL(string: urlString) {
-            imageView.load(url: url, placeholder: UIImage(named: Constants.placeholder))
+            presenter?.loadImage(from: url) { [weak self] image in
+                self?.imageView.image = image ?? UIImage(named: Constants.placeholder)
+            }
         } else if let urlString = song.artworkUrl100, let url = URL(string: urlString) {
-            imageView.load(url: url, placeholder: UIImage(named: Constants.placeholder))
+            presenter?.loadImage(from: url) { [weak self] image in
+                self?.imageView.image = image ?? UIImage(named: Constants.placeholder)
+            }
         } else {
             imageView.image = UIImage(named: Constants.placeholder)
         }
         
         if let previewUrlString = song.previewUrl, let previewUrl = URL(string: previewUrlString) {
-            playerItem = AVPlayerItem(url: previewUrl)
-            player = AVPlayer(playerItem: playerItem)
-            addPeriodicTimeObserver()
+            playerService.configure(with: previewUrl)
         } else {
             playPauseButton.isEnabled = false
             playPauseButton.setTitle(Constants.invalidURL, for: .normal)
@@ -286,5 +242,18 @@ extension SongDetailViewController: SongDetailViewProtocol {
     
     func updateProgress(currentTime: Double, duration: Double) {
         progressSlider.value = Float(currentTime / duration)
+    }
+}
+
+// MARK: - PlayerServiceDelegate
+extension SongDetailViewController: PlayerServiceDelegate {
+    func didUpdateProgress(currentTime: Double, duration: Double) {
+        progressSlider.value = Float(currentTime / duration)
+    }
+    
+    func didChangePlayStatus(isPlaying: Bool) {
+        playPauseButton.setImage(
+            isPlaying ? UIImage(systemName: Constants.pauseIcon) : UIImage(systemName: Constants.playIcon), for: .normal
+        )
     }
 }
